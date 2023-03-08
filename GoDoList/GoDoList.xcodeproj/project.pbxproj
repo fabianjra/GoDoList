@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4082781429B82DD6008499F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082781329B82DD6008499F0 /* Constants.swift */; };
+		4082781729B82E02008499F0 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082781629B82E02008499F0 /* Color+Extensions.swift */; };
+		4082781B29B82E40008499F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082781A29B82E40008499F0 /* Card.swift */; };
+		4082781F29B82E89008499F0 /* ItemNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082781E29B82E89008499F0 /* ItemNavbar.swift */; };
+		4082782229B82EB3008499F0 /* CustomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082782129B82EB3008499F0 /* CustomRectangle.swift */; };
 		40B6EDD029B82B0B0000A0F5 /* GoDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EDCF29B82B0B0000A0F5 /* GoDoListApp.swift */; };
 		40B6EDD229B82B0B0000A0F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EDD129B82B0B0000A0F5 /* ContentView.swift */; };
 		40B6EDD429B82B0C0000A0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40B6EDD329B82B0C0000A0F5 /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4082781329B82DD6008499F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4082781629B82E02008499F0 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		4082781A29B82E40008499F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4082781E29B82E89008499F0 /* ItemNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNavbar.swift; sourceTree = "<group>"; };
+		4082782129B82EB3008499F0 /* CustomRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRectangle.swift; sourceTree = "<group>"; };
 		40B6EDCC29B82B0B0000A0F5 /* GoDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40B6EDCF29B82B0B0000A0F5 /* GoDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoDoListApp.swift; sourceTree = "<group>"; };
 		40B6EDD129B82B0B0000A0F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +42,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4082781229B82DC4008499F0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4082781329B82DD6008499F0 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4082781529B82DEF008499F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4082781629B82E02008499F0 /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4082781829B82E29008499F0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4082781C29B82E5B008499F0 /* Header */,
+				4082781929B82E30008499F0 /* Card */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4082781929B82E30008499F0 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				4082781A29B82E40008499F0 /* Card.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		4082781C29B82E5B008499F0 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				4082781D29B82E67008499F0 /* ItemNavbar */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		4082781D29B82E67008499F0 /* ItemNavbar */ = {
+			isa = PBXGroup;
+			children = (
+				4082781E29B82E89008499F0 /* ItemNavbar.swift */,
+			);
+			path = ItemNavbar;
+			sourceTree = "<group>";
+		};
+		4082782029B82EA2008499F0 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				4082782129B82EB3008499F0 /* CustomRectangle.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		40B6EDC329B82B0B0000A0F5 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +118,10 @@
 		40B6EDCE29B82B0B0000A0F5 /* GoDoList */ = {
 			isa = PBXGroup;
 			children = (
+				4082782029B82EA2008499F0 /* Shapes */,
+				4082781829B82E29008499F0 /* Components */,
+				4082781529B82DEF008499F0 /* Extensions */,
+				4082781229B82DC4008499F0 /* Utils */,
 				40B6EDCF29B82B0B0000A0F5 /* GoDoListApp.swift */,
 				40B6EDD129B82B0B0000A0F5 /* ContentView.swift */,
 				40B6EDD329B82B0C0000A0F5 /* Assets.xcassets */,
@@ -137,8 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4082782229B82EB3008499F0 /* CustomRectangle.swift in Sources */,
 				40B6EDD229B82B0B0000A0F5 /* ContentView.swift in Sources */,
 				40B6EDD029B82B0B0000A0F5 /* GoDoListApp.swift in Sources */,
+				4082781B29B82E40008499F0 /* Card.swift in Sources */,
+				4082781429B82DD6008499F0 /* Constants.swift in Sources */,
+				4082781F29B82E89008499F0 /* ItemNavbar.swift in Sources */,
+				4082781729B82E02008499F0 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

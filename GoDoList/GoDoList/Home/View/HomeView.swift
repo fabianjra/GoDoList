@@ -9,18 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     
-    private var arrayItemNavbar: [ItemNavbar.Model]
-    private var arrayCards: [Card.Model]
+    @State private var itemsNabvarModelList: [ItemNavbar.Model]
+    @State private var cardModelList: [Card.Model]
     
     init() {
-        arrayItemNavbar = [
+        itemsNabvarModelList = [
             ItemNavbar.Model(value: 77, description: "Overdue"),
             ItemNavbar.Model(value: 81, description: "to do"),
             ItemNavbar.Model(value: 72, description: "open"),
             ItemNavbar.Model(value: 51, description: "due today")
         ]
         
-        arrayCards = [
+        cardModelList = [
             Card.Model(type: .asset,
                        status: .open,
                        title: "Request for a new Apple Macbook Pro",
@@ -69,8 +69,8 @@ struct HomeView: View {
                 
                 sectionTitle
                 
-                List(arrayCards) { item in
-                    Card(model: item)
+                List(cardModelList) { cardModel in
+                    Card(model: cardModel)
                 }
                 .padding(.horizontal, 0)
                 .listStyle(.plain)
@@ -136,24 +136,26 @@ struct HomeView: View {
     
     var cardStatus: some View {
         
-        //TODO: Ajustar el espacer o frame, para igualar los tamaños y no depender del contenido de cada ItemNavbar.
         //TODO: Agregar accion de filtrado a las cards.
         HStack {
-            ForEach(arrayItemNavbar.indices, id: \.self) { index in
-                ItemNavbar(model: arrayItemNavbar[index])
+            ForEach(itemsNabvarModelList.indices, id: \.self) { index in
+                ItemNavbar(model: itemsNabvarModelList[index])
+                    .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item dentro del header, con un tamaño igual
                 
                 //Si es el ultimo item, no agrega el spacer
-                if (arrayItemNavbar.endIndex - 1) != index{
+                if (itemsNabvarModelList.endIndex - 1) != index{
                     Spacer()
                 }
             }
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.vertical, 20)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 20.0))
         .shadow(color: .gray.opacity(0.5), radius: 15, x: 0, y: 0)
         .padding(.horizontal, 20)
+        .frame(maxWidth: 400, alignment: .center)
+        .frame(maxHeight: 90, alignment: .center)
     }
     
     var sectionTitle: some View {

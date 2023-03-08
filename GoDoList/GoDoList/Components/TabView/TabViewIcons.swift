@@ -32,4 +32,14 @@ enum TabViewIcons: String, CaseIterable, Identifiable {
         case .settings: Color.green
         }
     }
+    
+//    @ViewBuilder
+//    func getView(model1: [ItemNavbar.Model], model2: [Card.Model]) -> some View {
+//        switch self {
+//        case .home: HomeView()
+//        case .categories: Color.yellow
+//        case .search: Color.red
+//        case .settings: Color.green
+//        }
+//    }
 }

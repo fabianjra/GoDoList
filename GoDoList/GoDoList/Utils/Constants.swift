@@ -28,5 +28,11 @@ struct Constants {
         //Card Type:
         static let stack = Image(systemName: "square.stack.3d.up.fill")
         static let questionMark = Image(systemName: "questionmark.circle.fill")
+        
+        //TabView icons:
+        static let homeIcon = Image(systemName: "house.fill")
+        static let categoriesIcon = Image(systemName: "chart.bar.doc.horizontal.fill")
+        static let searchIcon = Image(systemName: "magnifyingglass")
+        static let settingsIcon = Image(systemName: "gearshape.fill")
     }
 }

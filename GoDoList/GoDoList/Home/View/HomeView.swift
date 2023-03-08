@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  GoDoList
 //
 //  Created by Fabian Josue Rodriguez Alvarez on 7/3/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     
     private var arrayItemNavbar: [ItemNavbar.Model]
     private var arrayCards: [Card.Model]
@@ -180,8 +180,8 @@ struct ContentView: View {
     
 }//End: ContentView
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

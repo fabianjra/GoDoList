@@ -9,17 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var itemsNabvarModelList: [ItemNavbar.Model]
+    //TODO: General -> pasar todas las vistas a ViewBuilders o vistas por separadas en carpetas para crearlos por View y ViewModel.
+    
+    //StateObject: Because the class is "ObservableObject":
+    @StateObject private var itemNavbarVM = ItemNavbarViewModel()
+    
     @State private var cardModelList: [Card.Model]
     
     init() {
-        itemsNabvarModelList = [
-            ItemNavbar.Model(value: 77, description: "Overdue"),
-            ItemNavbar.Model(value: 81, description: "to do"),
-            ItemNavbar.Model(value: 72, description: "open"),
-            ItemNavbar.Model(value: 51, description: "due today")
-        ]
-        
+
         cardModelList = [
             Card.Model(type: .asset,
                        status: .open,
@@ -138,16 +136,30 @@ struct HomeView: View {
         
         //TODO: Agregar accion de filtrado a las cards.
         HStack {
-            ForEach(itemsNabvarModelList.indices, id: \.self) { index in
-                ItemNavbar(model: itemsNabvarModelList[index])
-                    .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item dentro del header, con un tamaño igual
-                
-                //Si es el ultimo item, no agrega el spacer
-                if (itemsNabvarModelList.endIndex - 1) != index{
-                    Spacer()
+            
+            if itemNavbarVM.list.count != 0 {
+                //Unwrap the itemList
+                ForEach(itemNavbarVM.list.indices, id: \.self) { index in
+                    ItemNavbarView(model: itemNavbarVM.list[index])
+                        .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item dentro del header, con un tamaño igual
+                    
+                    //Si es el ultimo item, no agrega el spacer
+                    if (itemNavbarVM.list.endIndex - 1) != index{
+                        Spacer()
+                    }
                 }
+            } else {
+                //If there is no item in the Navbar:
+                ItemNavbarView(model: ItemNavbarModel(value: 0, description: "Empty"))
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
+            
         }
+        .task {
+            await itemNavbarVM.getItemsMock()
+        }
+        
+        //HStack style:
         .padding(.horizontal, 20)
         .padding(.vertical, 20)
         .background(.white)

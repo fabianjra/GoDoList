@@ -33,10 +33,10 @@ struct Card: View {
                 .font(.system(size: 16, weight: .bold))
             
             HStack {
-                Text("For").foregroundColor(.gray)
-                Text(model.owner)
-                Constants.Images.chevronDown
-                    .font(.system(size: 13, weight: .bold))
+                Text("Date").foregroundColor(.gray)
+                Text(model.date)
+//                Constants.Images.chevronDown
+//                    .font(.system(size: 13, weight: .bold))
                 
                 Spacer()
                 
@@ -72,14 +72,14 @@ extension Card {
         @Published public var type: ´Type´
         @Published public var status: Status
         @Published public var title: String
-        @Published public var owner: String
+        @Published public var date: String
         @Published public var time: String
         
-        public init(type: Card.´Type´ = .asset, status: Card.Status = .open, title: String, owner: String, time: String) {
+        public init(type: Card.´Type´ = .asset, status: Card.Status = .open, title: String, date: String, time: String) {
             self.type = type
             self.status = status
             self.title = title
-            self.owner = owner
+            self.date = date
             self.time = time
         }
     }
@@ -139,7 +139,7 @@ struct Card_Previews: PreviewProvider {
         Card(model: Card.Model(type: .asset,
                                status: .open,
                                title: "Request for a new Apple Macbook Pro",
-                               owner: "Fabian Rodriguez",
+                               date: "25 May",
                                time: "2m"))
     }
 }

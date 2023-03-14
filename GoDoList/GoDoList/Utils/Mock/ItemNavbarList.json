@@ -1,18 +1,18 @@
 [
     {
         "value": 77,
-        "description":"Overdue"
+        "description":"New"
     },
     {
         "value": 81,
-        "description":"To do"
-    },
-    {
-        "value": 77,
         "description":"Open"
     },
     {
+        "value": 77,
+        "description":"Done"
+    },
+    {
         "value": 151,
-        "description":"Due today"
+        "description":"Removed"
     }
 ]

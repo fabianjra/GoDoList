@@ -18,10 +18,10 @@ struct ItemNavbarView: View {
     
     public var body: some View {
         VStack(spacing: ItemNavbarConstants.Spacing.verticalSpacing) {
-            Text(model.value.description)
+            Text(model.count.description)
                 .font(.system(size: ItemNavbarConstants.Font.sizeValue, weight: .bold))
             
-            Text(model.description)
+            Text(model.title)
                 .font(.system(size: ItemNavbarConstants.Font.sizeDescription))
                 .foregroundColor(.gray)
         }
@@ -30,6 +30,6 @@ struct ItemNavbarView: View {
 
 struct ItemNavbar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemNavbarView(model: ItemNavbarModel(value: 421, description: "Overdue"))
+        ItemNavbarView(model: ItemNavbarModel(count: 10, title: "New"))
     }
 }

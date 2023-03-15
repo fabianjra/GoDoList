@@ -12,7 +12,11 @@ struct HomeView: View {
     //TODO: General -> pasar todas las vistas a ViewBuilders o vistas por separadas en carpetas para crearlos por View y ViewModel.
     
     //StateObject: Because the class is "ObservableObject":
-    @StateObject private var itemNavbarVM = ItemNavbarViewModel()
+    //@StateObject private var itemNavbarVM = ItemNavbarViewModel()
+    
+    
+    //StateObject: Because the class is "ObservableObject":
+    @StateObject private var itemViewModel = ItemViewModel()
     
     @State private var cardModelList: [Card.Model]
     
@@ -88,7 +92,7 @@ struct HomeView: View {
     
     var headerBackground: some View {
         Rectangle()
-            .fill(LinearGradient(colors: Constants.Colors.lightBlueGradiant,
+            .fill(LinearGradient(colors: Constants.Colors.lightGreenGradiant,
                                  startPoint: .top,
                                  endPoint: .bottom))
             .frame(maxWidth: .infinity)
@@ -136,27 +140,22 @@ struct HomeView: View {
         
         //TODO: Agregar accion de filtrado a las cards.
         HStack {
+            let newlist = itemViewModel.list.filter{ $0.status == "new" }
+            let todoList = itemViewModel.list.filter{ $0.status == "todo" }
+            let completedList = itemViewModel.list.filter{ $0.status == "completed" }
             
-            if itemNavbarVM.list.count != 0 {
-                //Unwrap the itemList
-                ForEach(itemNavbarVM.list.indices, id: \.self) { index in
-                    ItemNavbarView(model: itemNavbarVM.list[index])
-                        .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item dentro del header, con un tamaño igual
-                    
-                    //Si es el ultimo item, no agrega el spacer
-                    if (itemNavbarVM.list.endIndex - 1) != index{
-                        Spacer()
-                    }
-                }
-            } else {
-                //If there is no item in the Navbar:
-                ItemNavbarView(model: ItemNavbarModel(value: 0, description: "Empty"))
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
+            ItemNavbarView(model: ItemNavbarModel(count: newlist.count, title: "New"))
+                .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item
+            
+            ItemNavbarView(model: ItemNavbarModel(count: todoList.count, title: "To do"))
+                .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item
+            
+            ItemNavbarView(model: ItemNavbarModel(count: completedList.count, title: "Completed"))
+                .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item
             
         }
         .task {
-            await itemNavbarVM.getItemsMock()
+            await itemViewModel.getMockList()
         }
         
         //HStack style:

@@ -12,6 +12,7 @@ struct Constants {
     // MARK: - Colors
     struct Colors {
         static let lightBlueGradiant: Array = [Color.lightBlue, Color.lightBlue, Color.lighterBlue]
+        static let lightGreenGradiant: Array = [Color.globantGreen, Color.globantGreen, Color.globantGreenLight]
     }
     
     // MARK: - Images

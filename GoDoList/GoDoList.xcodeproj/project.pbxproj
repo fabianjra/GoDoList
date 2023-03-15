@@ -25,6 +25,7 @@
 		40E25F2D29C1769800E6036C /* Items.json in Resources */ = {isa = PBXBuildFile; fileRef = 40E25F2C29C1769800E6036C /* Items.json */; };
 		40E25F3029C1790500E6036C /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E25F2F29C1790500E6036C /* ItemModel.swift */; };
 		40E25F3329C17AE300E6036C /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E25F3229C17AE300E6036C /* ItemViewModel.swift */; };
+		40E25F3529C183DB00E6036C /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E25F3429C183DB00E6036C /* CardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		40E25F2C29C1769800E6036C /* Items.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Items.json; sourceTree = "<group>"; };
 		40E25F2F29C1790500E6036C /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		40E25F3229C17AE300E6036C /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		40E25F3429C183DB00E6036C /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				4082781A29B82E40008499F0 /* Card.swift */,
+				40E25F3429C183DB00E6036C /* CardModel.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				404AD7F629BEEA1D00B5981D /* NetworkError.swift in Sources */,
 				40B6EDD229B82B0B0000A0F5 /* HomeView.swift in Sources */,
 				404AD7E829BEDE3800B5981D /* ItemNavbarModel.swift in Sources */,
+				40E25F3529C183DB00E6036C /* CardModel.swift in Sources */,
 				4082782829B836EB008499F0 /* TabViewMain.swift in Sources */,
 				40B6EDD029B82B0B0000A0F5 /* GoDoListApp.swift in Sources */,
 				404AD7F329BEE8E900B5981D /* Utils.swift in Sources */,

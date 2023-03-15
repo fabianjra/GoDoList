@@ -8,20 +8,13 @@
 //import Foundation
 import SwiftUI
 
-//TODO: Use enum
-enum Status: String {
-    case new
-    case todo
-    case completed
-}
-
-class ItemModel: Decodable, ObservableObject {
-    
+class ItemModel: Identifiable, Decodable, ObservableObject {
+    public var id = UUID()
     @Published public var title: String
     @Published public var date: String
-    @Published public var status: String
+    @Published public var status: Status
     
-    public init(title: String, date: String, status: String) {
+    public init(title: String, date: String, status: Status) {
         self.title = title
         self.date = date
         self.status = status
@@ -33,12 +26,43 @@ class ItemModel: Decodable, ObservableObject {
         case status
     }
     
-    //For decoding model.
+    //For decoding model. It's neccesary because this model is using "Decodable" with "ObservableObject".
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
         date = try container.decode(String.self, forKey: .date)
-        status = try container.decode(String.self, forKey: .status)
+        status = try container.decode(Status.self, forKey: .status)
+    }
+    
+    enum Status: String, Identifiable, Decodable, CustomStringConvertible {
+        public var id: Self { self }
+        case new
+        case todo
+        case completed
+        
+        var color: Color {
+            switch self {
+            case .new: return Color.green
+            case .todo: return Color.yellow
+            case .completed: return Color.gray
+            }
+        }
+        
+        var description: String {
+            switch self {
+            case .new: return "New"
+            case .todo: return "To do"
+            case .completed: return "Completed"
+            }
+        }
+        
+        var icon: Image {
+            switch self {
+            case .new: return Constants.Images.sparkIcon
+            case .todo: return Constants.Images.textAppendIcon
+            case .completed: return Constants.Images.checkIcon
+            }
+        }
     }
     
     //For encoding model.

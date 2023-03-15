@@ -35,5 +35,8 @@ struct Constants {
         static let categoriesIcon = Image(systemName: "chart.bar.doc.horizontal.fill")
         static let searchIcon = Image(systemName: "magnifyingglass")
         static let settingsIcon = Image(systemName: "gearshape.fill")
+        static let checkIcon = Image(systemName: "checkmark.circle.fill")
+        static let sparkIcon = Image(systemName: "sparkles")
+        static let textAppendIcon = Image(systemName: "text.append")
     }
 }

@@ -9,17 +9,17 @@ import SwiftUI
 
 struct Card: View {
     
-    @ObservedObject private var model: Card.Model
+    @ObservedObject private var model: CardModel
     
-    init(model: Card.Model) {
+    init(model: CardModel) {
         self.model = model
     }
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 13) {
             HStack{
-                model.type.icon
-                Text(model.type.description).font(.system(size: 15, weight: .light))
+                model.status.icon
+                Text(model.title).font(.system(size: 15, weight: .light))
                 
                 Spacer()
                 
@@ -35,8 +35,8 @@ struct Card: View {
             HStack {
                 Text("Date").foregroundColor(.gray)
                 Text(model.date)
-//                Constants.Images.chevronDown
-//                    .font(.system(size: 13, weight: .bold))
+                //                Constants.Images.chevronDown
+                //                    .font(.system(size: 13, weight: .bold))
                 
                 Spacer()
                 
@@ -136,10 +136,6 @@ extension Card {
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(model: Card.Model(type: .asset,
-                               status: .open,
-                               title: "Request for a new Apple Macbook Pro",
-                               date: "25 May",
-                               time: "2m"))
+        Card(model: CardModel(title: "Make de dishes", date: "25 may", time: "2m", status: .new))
     }
 }

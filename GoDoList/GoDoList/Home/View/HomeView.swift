@@ -10,45 +10,11 @@ import SwiftUI
 struct HomeView: View {
     
     //TODO: General -> pasar todas las vistas a ViewBuilders o vistas por separadas en carpetas para crearlos por View y ViewModel.
-    
-    //StateObject: Because the class is "ObservableObject":
-    //@StateObject private var itemNavbarVM = ItemNavbarViewModel()
-    
-    
+
     //StateObject: Because the class is "ObservableObject":
     @StateObject private var itemViewModel = ItemViewModel()
     
-    @State private var cardModelList: [Card.Model]
-    
     init() {
-
-        cardModelList = [
-            Card.Model(type: .asset,
-                       status: .open,
-                       title: "Request for a new Apple Macbook Pro",
-                       date: "25 May",
-                       time: "2m"),
-            Card.Model(type: .asset,
-                       status: .accepted,
-                       title: "Request for new table",
-                       date: "01 Jun",
-                       time: "16m"),
-            Card.Model(type: .troubleshoot,
-                       status: .onHold,
-                       title: "Pago de planillas",
-                       date: "11 Jul",
-                       time: "50m"),
-            Card.Model(type: .asset,
-                       status: .inProgress,
-                       title: "Chair for users",
-                       date: "04 Apr",
-                       time: "40m"),
-            Card.Model(type: .troubleshoot,
-                       status: .solved,
-                       title: "Request for laptop",
-                       date: "28 March",
-                       time: "6d")
-        ]
     }
     
     //TODO: General -> Pasar valores a archivo de constantes.
@@ -71,11 +37,14 @@ struct HomeView: View {
                 
                 sectionTitle
                 
-                List(cardModelList) { cardModel in
-                    Card(model: cardModel)
+                List(itemViewModel.list) { item in
+                    Card(model: CardModel(title: item.title, date: item.date, time: "5m", status: item.status))
                 }
                 .padding(.horizontal, 0)
                 .listStyle(.plain)
+            }
+            .task {
+                await itemViewModel.getMockList()
             }
         }
         
@@ -140,9 +109,9 @@ struct HomeView: View {
         
         //TODO: Agregar accion de filtrado a las cards.
         HStack {
-            let newlist = itemViewModel.list.filter{ $0.status == "new" }
-            let todoList = itemViewModel.list.filter{ $0.status == "todo" }
-            let completedList = itemViewModel.list.filter{ $0.status == "completed" }
+            let newlist = itemViewModel.list.filter{ $0.status == .new }
+            let todoList = itemViewModel.list.filter{ $0.status == .todo }
+            let completedList = itemViewModel.list.filter{ $0.status == .completed }
             
             ItemNavbarView(model: ItemNavbarModel(count: newlist.count, title: "New"))
                 .frame(maxWidth: .infinity, alignment: .center) //Centra equivalemente cada item

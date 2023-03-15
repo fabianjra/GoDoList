@@ -38,7 +38,7 @@ struct HomeView: View {
                 sectionTitle
                 
                 List(itemViewModel.list) { item in
-                    Card(model: CardModel(title: item.title, date: item.date, time: "5m", status: item.status))
+                    Card(model: ItemModel(title: item.title, date: item.date, status: item.status))
                 }
                 .padding(.horizontal, 0)
                 .listStyle(.plain)

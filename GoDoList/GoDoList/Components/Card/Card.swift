@@ -9,9 +9,9 @@ import SwiftUI
 
 struct Card: View {
     
-    @ObservedObject private var model: CardModel
+    @ObservedObject private var model: ItemModel
     
-    init(model: CardModel) {
+    init(model: ItemModel) {
         self.model = model
     }
     
@@ -40,7 +40,7 @@ struct Card: View {
                 
                 Spacer()
                 
-                Text(model.time)
+                Text("2m") //TODO: Restar tiempo de vida del item.
             }
         }
         .padding(.horizontal, 20)
@@ -66,76 +66,8 @@ struct Card: View {
     }
 }
 
-extension Card {
-    final class Model: Identifiable, ObservableObject {
-        public var id = UUID()
-        @Published public var type: ´Type´
-        @Published public var status: Status
-        @Published public var title: String
-        @Published public var date: String
-        @Published public var time: String
-        
-        public init(type: Card.´Type´ = .asset, status: Card.Status = .open, title: String, date: String, time: String) {
-            self.type = type
-            self.status = status
-            self.title = title
-            self.date = date
-            self.time = time
-        }
-    }
-    
-    enum ´Type´: String, Identifiable, CustomStringConvertible {
-        public var id: Self { self }
-        case asset
-        case troubleshoot
-        
-        var icon: Image {
-            switch self {
-            case .asset: return Constants.Images.stack
-            case .troubleshoot: return Constants.Images.questionMark
-            }
-        }
-        
-        var description: String {
-            switch self {
-            case .asset: return "Asset"
-            case .troubleshoot: return "Troubleshoot"
-            }
-        }
-    }
-    
-    enum Status: String, Identifiable, CustomStringConvertible {
-        public var id: Self { self }
-        case open
-        case inProgress
-        case accepted
-        case solved
-        case onHold
-        
-        var color: Color {
-            switch self {
-            case .open: return Color.green
-            case .inProgress: return Color.yellow
-            case .accepted: return Color.blue
-            case .solved: return Color.black
-            case .onHold: return Color.red
-            }
-        }
-        
-        var description: String {
-            switch self {
-            case .open: return "Open"
-            case .inProgress: return "In Progress"
-            case .accepted: return "Accepted"
-            case .solved: return "Solved"
-            case .onHold: return "On Hold"
-            }
-        }
-    }
-}
-
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(model: CardModel(title: "Make de dishes", date: "25 may", time: "2m", status: .new))
+        Card(model: ItemModel(title: "Make de dishes", date: "25 may", status: .new))
     }
 }
